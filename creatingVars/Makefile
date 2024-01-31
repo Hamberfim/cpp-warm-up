@@ -6,3 +6,6 @@ varArrays: varArrays.cpp
 
 vectorArrays: vectorArrays.cpp
 	g++ -g -Wall -Wextra --std=c++20 -o vectorArrays.exe vectorArrays.cpp
+
+constantVars: constantVars.cpp
+	g++ -g -Wall -Wextra --std=c++20 -o constantVars.exe constantVars.cpp
