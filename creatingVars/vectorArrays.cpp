@@ -1,9 +1,9 @@
-/*  Program Name: vectorArrays.cpp
-    Author: Anthony Hamlin
-    Description: Vector array practice
-    Compile/Makefile setting:
-    vectorArrays: vectorArrays.cpp
-        g++ -g -Wall -Wextra --std=c++20 -o vectorArrays.exe vectorArrays.cpp
+/* Program Name: vectorArrays.cpp
+   Author: Anthony Hamlin
+   Description: Vector array practice
+   Compile/Makefile setting:
+vectorArrays: vectorArrays.cpp
+    g++ -g -ggdb -Wall -Wextra --std=c++20 -o vectorArrays.exe vectorArrays.cpp
 */
 
 #include <iostream>
