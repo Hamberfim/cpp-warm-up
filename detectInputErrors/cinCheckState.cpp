@@ -10,7 +10,7 @@
 using namespace std;
 
 int main(void) {
-  // the cin object to check the state of the stream
+  // use the cin object to check the state of the stream
   double number1;
 
   cout << "Enter a number: " << endl;
