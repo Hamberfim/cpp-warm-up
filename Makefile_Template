@@ -1,0 +1,38 @@
+# ALL VARIABLES
+# Directories for any tool chain files -examples
+# SOME_NEEDED_ROOT_DIR = /home/adhamlin/dev/tools/something-gcc
+# SOME_BIN_DIR = $(SOME_NEEDED_ROOT_DIR)/bin
+# SOME_INCLUDE_DIR = $(SOME_NEEDED_ROOT_DIR)/include
+# INCLUDE_DIRS = $(SOME_INCLUDE_DIR)
+# LIB_DIRS = $(INCLUDE_DIRS)
+
+# Toolchain
+CC = g++
+
+# Output Files
+TARGET = ProgramFile
+SOURCE = ProgramFile.cpp
+
+# Flags
+# MCU = msp430g2553
+# CFLAGS = $(WFLAGS) $(addprefix -I,$(INCLUDE_DIRS)) -g3 -ggdb
+CFLAGS = $(WFLAGS) -g3 -ggdb
+
+# LDFLAGS = -mmcu$(MCU) $(addprefix -L,$(LIB_DIRS)) 
+
+WFLAGS = -Wpedantic -Wall -Wextra -Werror -Wshadow --std=c++20
+
+# Variable for cppcheck
+CPPCHECK = cppcheck
+
+# Build
+$(TARGET): $(SOURCE)
+	$(CC) $(CFLAGS) -o $(TARGET).exe $(SOURCE)
+
+## Compiling percent sign to match object and output files
+## %.o: %.cpp
+##	$(CC) $(CFLAGS) -c -o $@ $^
+
+## Test/Check -doesn't work
+#cppcheck:
+#	@$(CPPCHECK) --enable=all --verbose --error-exitcode=1 $(SOURCE)

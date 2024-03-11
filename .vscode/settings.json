@@ -1,6 +1,5 @@
 {
   "files.associations": {
-    ".fantomasignore": "ignore",
     "*.COBOL*": "cobol",
     "*.COB*": "cobol",
     "*.COBCOPY*": "cobol",
@@ -23,6 +22,8 @@
     "*.bms": "hlasm",
     "*.rex": "rexx",
     "*.rexx": "rexx",
-    "ostream": "cpp"
+    ".fantomasignore": "ignore",
+    "ostream": "cpp",
+    "iostream": "cpp"
   }
 }
