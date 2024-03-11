@@ -15,10 +15,7 @@ SOURCE = sum.cpp
 
 # Flags
 CFLAGS = -g3 -ggdb -fsanitize=address
-WFLAGS = -pedantic -Wall -Wextra -Werror -Wshadow --std=c++20
-
-# Variable for cppcheck
-CPPCHECK = cppcheck
+WFLAGS = -Wpedantic -Wall -Wextra -Werror -Wshadow --std=c++20
 
 # Build
 $(TARGET): $(SOURCE)
