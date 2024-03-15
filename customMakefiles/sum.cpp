@@ -5,7 +5,7 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-  int num1 = 15;
+  int num1 = 12;
   int num2 = 12;
   char arr[3] = {'z', 'x', 'y'};
 

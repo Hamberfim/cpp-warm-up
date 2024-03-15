@@ -13,6 +13,7 @@ CC = g++
 TARGET = sum
 SOURCE = sum.cpp
 
+
 # Flags
 CFLAGS = -g3 -ggdb -fsanitize=address
 WFLAGS = -Wpedantic -Wall -Wextra -Werror -Wshadow --std=c++20

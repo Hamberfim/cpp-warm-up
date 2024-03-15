@@ -1,5 +1,6 @@
 {
   "files.associations": {
+    ".fantomasignore": "ignore",
     "*.COBOL*": "cobol",
     "*.COB*": "cobol",
     "*.COBCOPY*": "cobol",
@@ -22,8 +23,9 @@
     "*.bms": "hlasm",
     "*.rex": "rexx",
     "*.rexx": "rexx",
-    ".fantomasignore": "ignore",
     "ostream": "cpp",
-    "iostream": "cpp"
-  }
+    "iostream": "cpp",
+    "*.tcc": "cpp"
+  },
+  "C_Cpp.default.compilerPath": "/usr/bin/g++"
 }
