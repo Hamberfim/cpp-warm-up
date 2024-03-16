@@ -32,6 +32,32 @@ bool isValidName(string name) {
   return true;
 }
 
+bool isValidInitial(char middleInitial) {
+  if (middleInitial == '\0' || middleInitial == '\n') {
+    return false;
+  }
+
+  if (middleInitial >= '0' && middleInitial <= '9') {
+    return false;
+  }
+
+  return true;
+}
+
+bool isValidState(string state) {
+  if (state.length() == 0) {
+    return false;
+  }
+
+  for (unsigned int i = 0; i < state.length(); i++) {
+    if (state[i] >= '0' && state[i] <= '9') {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 // validate string zip code - 5 character
 bool isValidZip(string zipCode) {
   // is the string empty
@@ -60,6 +86,7 @@ bool isValidZip(string zipCode) {
   return true;
 }
 
+/* FIX: Length of main - refactor by extracting some code to functions */
 int main(void) {
   // title
   cout << "\n=== Guest Book ===\n" << endl;
@@ -82,6 +109,15 @@ int main(void) {
   cout << "Enter your middle initial: " << endl;
   middleInitial = cin.get(); // get first character only
   cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard leftovers
+
+  // validate initial on fail ask again
+  while (!isValidInitial(middleInitial)) {
+    cerr << "Error! Input can not contain numbers." << endl;
+    cin.clear();
+    cout << "Enter your middle initial: " << endl;
+    middleInitial = cin.get(); // get first character only
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard leftovers
+  }
 
   string lName;
   cout << "Enter your last name: " << endl;
@@ -113,10 +149,19 @@ int main(void) {
 
   string state;
   cout << "Enter your two letter state abbreviation: " << endl;
-  state = cin.get();
-  state += cin.get();
+  state = cin.get();                                   // get first char
+  state += cin.get();                                  // get second char
   cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard leftovers
-  // getline(cin, state); // get entire line
+
+  // validate state on fail ask again
+  while (!isValidState(state)) {
+    cerr << "Error! Input can not contain numbers." << endl;
+    cin.clear();
+    cout << "Enter your two letter state abbreviation: " << endl;
+    state = cin.get();                                   // get first char
+    state += cin.get();                                  // get second char
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard leftovers
+  }
 
   string zipCode;
   cout << "Enter your zip code: " << endl;
