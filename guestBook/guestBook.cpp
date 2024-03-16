@@ -86,6 +86,19 @@ bool isValidZip(string zipCode) {
   return true;
 }
 
+// display results
+void guestEntryDisplay(string fName, char middleInitial, string lName,
+                       string address, string city, string state,
+                       string zipCode) {
+
+  cout << "\n" << endl;
+
+  cout << "=== Guest Book Entry ===" << endl;
+  cout << fName + ' ' + middleInitial + ". " + lName + '\n'
+       << address + '\n'
+       << city + ", " + state + ", " + zipCode + '\n';
+}
+
 /* FIX: Length of main - refactor by extracting some code to functions */
 int main(void) {
   // title
@@ -174,11 +187,7 @@ int main(void) {
     getline(cin, zipCode);
   }
 
-  cout << "\n" << endl;
-
-  cout << "=== Entry ===" << endl;
-  cout << fName + ' ' + middleInitial + ". " + lName + '\n'
-       << city + ", " + state + ", " + zipCode + '\n';
+  guestEntryDisplay(fName, middleInitial, lName, address, city, state, zipCode);
 
   return 0;
 }
