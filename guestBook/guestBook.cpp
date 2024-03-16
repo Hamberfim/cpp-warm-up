@@ -19,27 +19,38 @@ int main(void) {
   cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard leftovers
 
   char middleInitial;
-  cout << "Enter you middle initial: " << endl;
+  cout << "Enter your middle initial: " << endl;
   middleInitial = cin.get(); // get first character only
   cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard leftovers
 
   string lName;
-  cout << "Enter last name: " << endl;
+  cout << "Enter your last name: " << endl;
   getline(cin, lName); // get entire line
 
+  string address;
+  cout << "Enter your address: " << endl;
+  getline(cin, address);
+
   string city;
-  cout << "Enter city: " << endl;
+  cout << "Enter your city: " << endl;
   getline(cin, city); // get entire line
 
   string state;
-  cout << "Enter State: " << endl;
-  getline(cin, state); // get entire line
+  cout << "Enter your two letter state abbreviation: " << endl;
+  state = cin.get();
+  state += cin.get();
+  cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard leftovers
+  // getline(cin, state); // get entire line
 
-  cout << "\n\n" << endl;
+  string zipCode;
+  cout << "Enter your zip code: " << endl;
+  getline(cin, zipCode);
+
+  cout << "\n" << endl;
 
   cout << "=== Entry ===" << endl;
   cout << fName + ' ' + middleInitial + ". " + lName + '\n'
-       << city + ", " + state + '\n';
+       << city + ", " + state + ", " + zipCode + '\n';
 
   return 0;
 }
