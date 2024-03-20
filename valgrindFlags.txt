@@ -1,1 +1,1 @@
-valgrind -s --leak-check=full --show-leak-kinds=all ./<FILE.CPP>
+valgrind -s --leak-check=full --show-leak-kinds=all ./<FILE.EXE>

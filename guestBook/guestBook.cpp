@@ -32,6 +32,7 @@ bool isValidName(string name) {
   return true;
 }
 
+// validate middle initial
 bool isValidInitial(char middleInitial) {
   if (middleInitial == '\0' || middleInitial == '\n') {
     return false;
@@ -44,6 +45,7 @@ bool isValidInitial(char middleInitial) {
   return true;
 }
 
+// validate state
 bool isValidState(string state) {
   if (state.length() == 0) {
     return false;
@@ -66,7 +68,7 @@ bool isValidZip(string zipCode) {
   }
 
   // is the string 5 in length
-  if (zipCode.length() > 0 && zipCode.length() < 5) {
+  if (zipCode.length() < 5) {
     return false;
   }
 
@@ -86,25 +88,10 @@ bool isValidZip(string zipCode) {
   return true;
 }
 
-// display results
-void guestEntryDisplay(string fName, char middleInitial, string lName,
-                       string address, string city, string state,
-                       string zipCode) {
-
-  cout << "\n" << endl;
-
-  cout << "=== Guest Book Entry ===" << endl;
-  cout << fName + ' ' + middleInitial + ". " + lName + '\n'
-       << address + '\n'
-       << city + ", " + state + ", " + zipCode + '\n';
-}
-
-/* FIX: Length of main - refactor by extracting some code to functions */
-int main(void) {
-  // title
-  cout << "\n=== Guest Book ===\n" << endl;
-
-  string fName;
+// prompt user for need info
+void GetUserEntry(string &fName, char &middleInitial, string &lName,
+                  string &address, string &city, string &state,
+                  string &zipCode) {
   cout << "Enter your first name: " << endl;
   cin >> fName;                                        // get first string only
   cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard leftovers
@@ -118,7 +105,6 @@ int main(void) {
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard leftovers
   }
 
-  char middleInitial;
   cout << "Enter your middle initial: " << endl;
   middleInitial = cin.get(); // get first character only
   cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard leftovers
@@ -132,7 +118,6 @@ int main(void) {
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard leftovers
   }
 
-  string lName;
   cout << "Enter your last name: " << endl;
   getline(cin, lName); // get entire line
 
@@ -144,11 +129,9 @@ int main(void) {
     getline(cin, lName); // get entire line
   }
 
-  string address;
   cout << "Enter your address: " << endl;
   getline(cin, address);
 
-  string city;
   cout << "Enter your city: " << endl;
   getline(cin, city); // get entire line
 
@@ -160,7 +143,6 @@ int main(void) {
     getline(cin, city); // get entire line
   }
 
-  string state;
   cout << "Enter your two letter state abbreviation: " << endl;
   state = cin.get();                                   // get first char
   state += cin.get();                                  // get second char
@@ -176,7 +158,6 @@ int main(void) {
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard leftovers
   }
 
-  string zipCode;
   cout << "Enter your zip code: " << endl;
   getline(cin, zipCode);
   // validate zip on fail ask again
@@ -186,6 +167,36 @@ int main(void) {
     cout << "Enter your zip code: " << endl;
     getline(cin, zipCode);
   }
+}
+
+// display results
+void guestEntryDisplay(const string &fName, char middleInitial,
+                       const string &lName, const string &address,
+                       const string &city, const string &state,
+                       const string &zipCode) {
+
+  cout << "\n" << endl;
+
+  cout << "=== Guest Book Entry ===" << endl;
+  cout << fName + ' ' + middleInitial + ". " + lName + '\n'
+       << address + '\n'
+       << city + ", " + state + ", " + zipCode + '\n';
+}
+
+int main(void) {
+
+  // title
+  cout << "\n=== Guest Book ===\n" << endl;
+
+  string fName;
+  char middleInitial;
+  string lName;
+  string address;
+  string city;
+  string state;
+  string zipCode;
+
+  GetUserEntry(fName, middleInitial, lName, address, city, state, zipCode);
 
   guestEntryDisplay(fName, middleInitial, lName, address, city, state, zipCode);
 
