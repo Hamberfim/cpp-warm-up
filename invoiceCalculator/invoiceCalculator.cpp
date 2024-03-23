@@ -16,8 +16,8 @@ using std::numeric_limits;
 using std::streamsize;
 
 // function prototypes
-bool isValidCustomerType(char customer_type);
-double customerDiscount(char customer_type, double subtotal);
+// bool isValidCustomerType(char customer_type);
+// double customerDiscount(char customer_type, double subtotal);
 
 // functions
 bool isValidCustomerType(char customer_type) {
@@ -29,11 +29,12 @@ bool isValidCustomerType(char customer_type) {
     return false;
   }
 
-  if (tolower(customer_type) != 'r' || tolower(customer_type) != 'w') {
-    return false;
+  // only time its true
+  if (tolower(customer_type) == 'r' || tolower(customer_type) == 'w') {
+    return true;
   }
 
-  return true;
+  return false;
 }
 
 double customerDiscount(char customer_type, double subtotal) {
@@ -42,7 +43,7 @@ double customerDiscount(char customer_type, double subtotal) {
     // discount ranges
     if (subtotal < 100) {
       return .0;
-    } else if (subtotal >= 100 && subtotal < 250) {
+    } else if (subtotal < 250) {
       return .1;
     } else {
       return .2;
@@ -54,6 +55,8 @@ double customerDiscount(char customer_type, double subtotal) {
     } else {
       return .5;
     }
+  } else {
+    return .0;
   }
 }
 
@@ -70,8 +73,8 @@ int main(void) {
   double invoice_total;
 
   // get user input
-  cout << "Enter Customer Type (r/w): " << endl;
-  customer_type = cin.get();
+  cout << "Enter customer type is wholesale or retail (r/w): " << endl;
+  customer_type = cin.get(); // just get the first letter
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
   // validate input
@@ -80,7 +83,7 @@ int main(void) {
     cin.clear();
     cout << "Enter Customer Type (r/w):" << endl;
     customer_type = cin.get();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    // cin.ignore(numeric_limits<streamsize>::max(), '\n');
   }
 
   cout << "Enter your subtotal: " << endl;
