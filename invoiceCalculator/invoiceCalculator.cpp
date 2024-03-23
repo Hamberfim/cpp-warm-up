@@ -4,6 +4,7 @@
  * This program calculates the users invoice.
  */
 #include <cmath>
+#include <iomanip>
 #include <iostream>
 #include <limits>
 
@@ -11,8 +12,10 @@ using std::cerr;
 using std::cin;
 using std::cout;
 using std::endl;
+using std::fixed;
 using std::getline;
 using std::numeric_limits;
+using std::setprecision;
 using std::streamsize;
 
 // function prototypes
@@ -83,7 +86,7 @@ int main(void) {
     cin.clear();
     cout << "Enter Customer Type (r/w):" << endl;
     customer_type = cin.get();
-    // cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
   }
 
   cout << "Enter your subtotal: " << endl;
@@ -101,12 +104,18 @@ int main(void) {
 
   // calculate invoice
   discount_amount = subtotal * discount_percent;
-  cout << discount_amount << endl;
 
   invoice_total = subtotal - discount_amount;
-  cout << invoice_total << endl;
 
   // display output
+  cout << "\nSubtotal:           $" << fixed << setprecision(2) << subtotal
+       << endl;
+  cout << "Discount percent:   " << fixed << setprecision(0)
+       << (discount_percent * 100) << "%" << endl;
+  cout << "Discount amount:    $" << fixed << setprecision(2) << discount_amount
+       << endl;
+  cout << "Invoice total:      $" << fixed << setprecision(2) << invoice_total
+       << endl;
 
   // main return
   return 0;

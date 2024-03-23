@@ -27,6 +27,8 @@
     "*.rexx": "rexx",
     "*.tcc": "cpp",
     "iostream": "cpp",
-    "limits": "cpp"
+    "limits": "cpp",
+    "ostream": "cpp",
+    "iomanip": "cpp"
   }
 }
