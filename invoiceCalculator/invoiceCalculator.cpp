@@ -15,6 +15,11 @@ using std::getline;
 using std::numeric_limits;
 using std::streamsize;
 
+// function prototypes
+bool isValidCustomerType(char customer_type);
+double customerDiscount(char customer_type, double subtotal);
+
+// functions
 bool isValidCustomerType(char customer_type) {
   if (customer_type == '\0' || customer_type == '\n') {
     return false;
@@ -29,6 +34,27 @@ bool isValidCustomerType(char customer_type) {
   }
 
   return true;
+}
+
+double customerDiscount(char customer_type, double subtotal) {
+  // set discount based on customer type
+  if (tolower(customer_type) == 'r') {
+    // discount ranges
+    if (subtotal < 100) {
+      return .0;
+    } else if (subtotal >= 100 && subtotal < 250) {
+      return .1;
+    } else {
+      return .2;
+    }
+  } else if (tolower(customer_type) == 'w') {
+    // discount ranges
+    if (subtotal < 500) {
+      return .4;
+    } else {
+      return .5;
+    }
+  }
 }
 
 int main(void) {
@@ -68,9 +94,14 @@ int main(void) {
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
   }
 
-  // set discount
+  discount_percent = customerDiscount(customer_type, subtotal);
 
   // calculate invoice
+  discount_amount = subtotal * discount_percent;
+  cout << discount_amount << endl;
+
+  invoice_total = subtotal - discount_amount;
+  cout << invoice_total << endl;
 
   // display output
 
