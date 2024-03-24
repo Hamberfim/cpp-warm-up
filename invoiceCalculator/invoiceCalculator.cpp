@@ -18,10 +18,6 @@ using std::numeric_limits;
 using std::setprecision;
 using std::streamsize;
 
-// function prototypes
-// bool isValidCustomerType(char customer_type);
-// double customerDiscount(char customer_type, double subtotal);
-
 // functions
 bool isValidCustomerType(char customer_type) {
   if (customer_type == '\0' || customer_type == '\n') {
@@ -40,6 +36,7 @@ bool isValidCustomerType(char customer_type) {
   return false;
 }
 
+// determine discount
 double customerDiscount(char customer_type, double subtotal) {
   // set discount based on customer type
   if (tolower(customer_type) == 'r') {
@@ -53,14 +50,27 @@ double customerDiscount(char customer_type, double subtotal) {
     }
   } else if (tolower(customer_type) == 'w') {
     // discount ranges
-    if (subtotal < 500) {
-      return .4;
-    } else {
-      return .5;
-    }
+    // refactored
+    return subtotal < 500 ? .4 : .5;
   } else {
     return .0;
   }
+}
+
+// display invoice
+void DisplayInvoice(double subtotal, double discount_percent,
+                    double discount_amount, double invoice_total) {
+  // display output
+  cout << "\n======= Your Invoice =======" << endl;
+  cout << "Subtotal:           $" << fixed << setprecision(2) << subtotal
+       << endl;
+  cout << "Discount percent:   " << fixed << setprecision(0)
+       << (discount_percent * 100) << "%" << endl;
+  cout << "Discount amount:    $" << fixed << setprecision(2) << discount_amount
+       << endl;
+  cout << "Invoice total:      $" << fixed << setprecision(2) << invoice_total
+       << '\n'
+       << endl;
 }
 
 int main(void) {
@@ -104,18 +114,9 @@ int main(void) {
 
   // calculate invoice
   discount_amount = subtotal * discount_percent;
-
   invoice_total = subtotal - discount_amount;
 
-  // display output
-  cout << "\nSubtotal:           $" << fixed << setprecision(2) << subtotal
-       << endl;
-  cout << "Discount percent:   " << fixed << setprecision(0)
-       << (discount_percent * 100) << "%" << endl;
-  cout << "Discount amount:    $" << fixed << setprecision(2) << discount_amount
-       << endl;
-  cout << "Invoice total:      $" << fixed << setprecision(2) << invoice_total
-       << endl;
+  DisplayInvoice(subtotal, discount_percent, discount_amount, invoice_total);
 
   // main return
   return 0;
