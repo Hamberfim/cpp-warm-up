@@ -41,13 +41,10 @@ double customerDiscount(char customer_type, double subtotal) {
   // set discount based on customer type
   if (tolower(customer_type) == 'r') {
     // discount ranges
-    if (subtotal < 100) {
-      return .0;
-    } else if (subtotal < 250) {
-      return .1;
-    } else {
-      return .2;
-    }
+    // refactor
+    return (subtotal >= 100 && subtotal < 250)
+               ? .1
+               : .2; // otherwise .0 at call of func ternary;
   } else if (tolower(customer_type) == 'w') {
     // discount ranges
     // refactored
@@ -81,7 +78,7 @@ int main(void) {
   // var declarations
   char customer_type;
   double subtotal;
-  double discount_percent;
+  double discount_percent = .0;
   double discount_amount;
   double invoice_total;
 
@@ -110,7 +107,8 @@ int main(void) {
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
   }
 
-  discount_percent = customerDiscount(customer_type, subtotal);
+  discount_percent =
+      (subtotal < 100) ? .0 : customerDiscount(customer_type, subtotal);
 
   // calculate invoice
   discount_amount = subtotal * discount_percent;
