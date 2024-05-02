@@ -29,6 +29,7 @@
     "iostream": "cpp",
     "limits": "cpp",
     "ostream": "cpp",
-    "iomanip": "cpp"
+    "iomanip": "cpp",
+    "cstdlib": "cpp"
   }
 }
